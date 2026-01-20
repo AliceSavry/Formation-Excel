@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Excel 365 - Maîtrise des Tableaux et Formules</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        code, .mono {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            min-height: 100vh;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .module-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .module-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .star {
+            color: #fbbf24;
+            text-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+        }
+        
+        .exercise-item {
+            transition: all 0.2s ease;
+            border-radius: 12px;
+        }
+        
+        .exercise-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .excel-green {
+            background: linear-gradient(135deg, #217346 0%, #185c37 100%);
+        }
+        
+        .mode-operatoire {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .mode-formule {
+            background: linear-gradient(135deg, rgba(52, 211, 153, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .accordion-content.open {
+            max-height: 3000px;
+        }
+        
+        .check-circle {
+            transition: all 0.2s ease;
+        }
+        
+        .check-circle.checked {
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
+            border-color: transparent;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .traffic-light {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .traffic-light span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #ff5f57; }
+        .dot-yellow { background: #febc2e; }
+        .dot-green { background: #28c840; }
+
+        .window-bar {
+            background: rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .kbd {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="text-white overflow-x-hidden">
+    <!-- Navigation macOS style -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="max-w-6xl mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="excel-green w-9 h-9 rounded-lg flex items-center justify-center shadow-lg">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.5 17.5L7 14l2.5-3.5 1.5 1-2 2.5 2 2.5-1.5 1zM14.5 17.5l-1.5-1 2-2.5-2-2.5 1.5-1L17 14l-2.5 3.5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="font-semibold text-sm">Excel 365</h1>
+                        <p class="text-xs text-gray-400">Formation Débutant</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#modules" class="text-sm text-gray-300 hover:text-white transition">Modules</a>
+                    <a href="#faq" class="text-sm text-gray-300 hover:text-white transition">FAQ</a>
+                    <a href="#evaluation" class="text-sm text-gray-300 hover:text-white transition">Auto-évaluation</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-xs text-gray-400">Progression</p>
+                        <p class="text-sm font-semibold" id="progressText">0%</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full glass flex items-center justify-center">
+                        <svg class="w-10 h-10" viewBox="0 0 40 40">
+                            <circle cx="20" cy="20" r="16" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3"/>
+                            <circle id="progressCircle" cx="20" cy="20" r="16" fill="none" stroke="url(#gradient)" stroke-width="3" stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="100.5" transform="rotate(-90 20 20)"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#34d399"/>
+                                    <stop offset="100%" stop-color="#3b82f6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-28 pb-16 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span class="text-sm text-gray-300">8 modules • 40 exercices pratiques</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+                Formation <span class="gradient-text">Excel 365</span>
+            </h1>
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+                Maîtrise des Tableaux et des Formules<br>
+                <span class="text-gray-500">Conçue spécifiquement pour les grands débutants</span>
+            </p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="#modules" class="excel-green px-6 py-3 rounded-xl font-medium hover:opacity-90 transition flex items-center gap-2 shadow-lg text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Commencer
+                </a>
+                <a href="#evaluation" class="glass px-6 py-3 rounded-xl font-medium hover:bg-white/10 transition text-sm">
+                    Tester mes connaissances
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="py-8 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid grid-cols-4 gap-3">
+                <div class="glass rounded-2xl p-4 text-center">
+                    <p class="text-2xl font-bold gradient-text">8</p>
+                    <p class="text-xs text-gray-400 mt-1">Modules</p>
+                </div>
+                <div class="glass rounded-2xl p-4 text-center">
+                    <p class="text-2xl font-bold gradient-text">40</p>
+                    <p class="text-xs text-gray-400 mt-1">Exercices</p>
+                </div>
+                <div class="glass rounded-2xl p-4 text-center">
+                    <p class="text-2xl font-bold gradient-text">3</p>
+                    <p class="text-xs text-gray-400 mt-1">Niveaux</p>
+                </div>
+                <div class="glass rounded-2xl p-4 text-center">
+                    <p class="text-2xl font-bold gradient-text">∞</p>
+                    <p class="text-xs text-gray-400 mt-1">Pratique</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section id="modules" class="py-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">Sommaire de la formation</h2>
+                <p class="text-gray-400 text-sm">Cliquez sur un module pour découvrir son contenu</p>
+            </div>
+            
+            <div class="space-y-4" id="modulesContainer">
+                
+                <!-- Module 1 -->
+                <div class="module-card rounded-2xl overflow-hidden cursor-pointer" onclick="toggleModule(1)">
+                    <div class="p-5 flex items-center gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <span class="text-lg font-bold">1</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold mb-0.5">L'Environnement et l'Interface</h3>
+                            <p class="text-gray-400 text-sm truncate">Comprendre où l'on se trouve et comment naviguer</p>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <span class="text-xs text-gray-500 hidden sm:block">5 exercices</span>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" id="arrow1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="content1">
+                        <div class="px-5 pb-5 space-y-4">
+                            <!-- Mode opératoire -->
+                            <div class="mode-operatoire rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span class="text-sm font-medium text-blue-400">Mode opératoire</span>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li><strong class="text-white">Identifier une cellule :</strong> Cliquez sur une case ; son nom (ex: <code class="kbd">B2</code>) s'affiche dans la <strong>Zone de Nom</strong> à gauche.</li>
+                                    <li><strong class="text-white">Saisie :</strong> Tapez votre texte ou chiffre, puis validez avec <code class="kbd">Entrée</code> (descendre) ou <code class="kbd">Tab</code> (droite).</li>
+                                    <li><strong class="text-white">Zoom :</strong> Utilisez le curseur en bas à droite pour agrandir les cellules sans changer leur taille réelle.</li>
+                                </ul>
+                            </div>
+                            <!-- Exercices -->
+                            <div class="space-y-2">
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Allez en cellule <strong>A1</strong> et tapez "Ventes 2024".</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Allez en <strong>Z100</strong> via la Zone de Nom.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Renommez la feuille en bas "Données" (double-clic sur l'onglet).</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Ajoutez une feuille avec le bouton <strong>(+)</strong>.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Changez la couleur de l'onglet en rouge (clic droit sur l'onglet).</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="module-card rounded-2xl overflow-hidden cursor-pointer" onclick="toggleModule(2)">
+                    <div class="p-5 flex items-center gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <span class="text-lg font-bold">2</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold mb-0.5">Manipulation et Recopie automatique</h3>
+                            <p class="text-gray-400 text-sm truncate">Gagner du temps et éviter les erreurs de saisie répétitive</p>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <span class="text-xs text-gray-500 hidden sm:block">5 exercices</span>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" id="arrow2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="content2">
+                        <div class="px-5 pb-5 space-y-4">
+                            <div class="mode-operatoire rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span class="text-sm font-medium text-blue-400">Mode opératoire</span>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li><strong class="text-white">La "Tirette" (Poignée de recopie) :</strong> Cliquez sur une cellule, visez le petit carré vert en bas à droite. Quand la croix devient noire, glissez vers le bas ou la droite.</li>
+                                    <li><strong class="text-white">Séries intelligentes :</strong> Tapez "Janvier", tirez la poignée : Excel écrit "Février", "Mars", etc., tout seul.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Tapez "Lundi" en A2, tirez jusqu'en A8.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Tapez "1" en B2, "2" en B3, sélectionnez les deux et tirez jusqu'à 10.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Ajustez la largeur d'une colonne en double-cliquant sur le trait entre les lettres A et B.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Déplacez un bloc de cellules en le saisissant par son bord vert (croix fléchée).</p>
+                                    <span class="star text-sm">★★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Supprimez une colonne vide (clic droit sur la lettre de colonne > Supprimer).</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="module-card rounded-2xl overflow-hidden cursor-pointer" onclick="toggleModule(3)">
+                    <div class="p-5 flex items-center gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <span class="text-lg font-bold">3</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold mb-0.5">Mise en forme et Esthétique</h3>
+                            <p class="text-gray-400 text-sm truncate">Transformer des données brutes en un tableau lisible et professionnel</p>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <span class="text-xs text-gray-500 hidden sm:block">5 exercices</span>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" id="arrow3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="content3">
+                        <div class="px-5 pb-5 space-y-4">
+                            <div class="mode-operatoire rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span class="text-sm font-medium text-blue-400">Mode opératoire</span>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li><strong class="text-white">Bordures :</strong> Sélectionnez vos données, allez dans l'onglet <strong>Accueil</strong>, icône <strong>Bordures</strong> > <strong>Toutes les bordures</strong>.</li>
+                                    <li><strong class="text-white">Fusionner :</strong> Sélectionnez plusieurs cellules horizontales, cliquez sur <strong>Fusionner et centrer</strong> pour créer un titre.</li>
+                                    <li><strong class="text-white">Format Nombre :</strong> Sélectionnez vos prix, cliquez sur l'icône <strong>€</strong> (Format Monétaire).</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Mettez vos titres en <strong>Gras</strong> et fond bleu.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Appliquez des bordures à tout votre tableau.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Fusionnez les cellules A1 à D1 pour un titre centré.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Passez une colonne de chiffres en format <strong>Pourcentage</strong>.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Utilisez le <strong>Pinceau</strong> (Reproduire la mise en forme) pour copier le style d'une cellule vers une autre.</p>
+                                    <span class="star text-sm">★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="module-card rounded-2xl overflow-hidden cursor-pointer" onclick="toggleModule(4)">
+                    <div class="p-5 flex items-center gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <span class="text-lg font-bold">4</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold mb-0.5">Les Calculs Élémentaires</h3>
+                            <p class="text-gray-400 text-sm truncate">Utiliser Excel comme une calculatrice intelligente</p>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <span class="text-xs text-gray-500 hidden sm:block">5 exercices</span>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" id="arrow4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="content4">
+                        <div class="px-5 pb-5 space-y-4">
+                            <div class="mode-formule rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                    </svg>
+                                    <span class="text-sm font-medium text-emerald-400">📘 Mode d'emploi des Formules de base</span>
+                                </div>
+                                <ol class="space-y-2 text-sm text-gray-300 list-decimal list-inside">
+                                    <li><strong class="text-white">La règle d'or :</strong> Commencez toujours par le signe <code class="kbd">=</code>.</li>
+                                    <li><strong class="text-white">Utiliser les références :</strong> Ne tapez pas <code class="kbd">=10+5</code>, tapez <code class="kbd">=</code> puis cliquez sur la cellule contenant 10, tapez <code class="kbd">+</code>, puis cliquez sur la cellule contenant 5.</li>
+                                    <li><strong class="text-white">Les signes :</strong> <code class="kbd">+</code> (addition), <code class="kbd">-</code> (soustraction), <code class="kbd">*</code> (multiplication), <code class="kbd">/</code> (division).</li>
+                                </ol>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Calculez la somme de deux cellules : <code class="kbd">=A1+B1</code>.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Calculez une différence : <code class="kbd">=A1-B1</code>.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Multipliez une quantité par un prix unitaire : <code class="kbd">=A1*B1</code>.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Divisez un total par un nombre de mois : <code class="kbd">=A1/B1</code>.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Calculez une augmentation : <code class="kbd">=A1*(1+B1)</code> (où B1 est un taux de croissance).</p>
+                                    <span class="star text-sm">★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="module-card rounded-2xl overflow-hidden cursor-pointer" onclick="toggleModule(5)">
+                    <div class="p-5 flex items-center gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <span class="text-lg font-bold">5</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold mb-0.5">Fonctions Statistiques Automatisées</h3>
+                            <p class="text-gray-400 text-sm truncate">Analyser des colonnes entières sans erreur</p>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <span class="text-xs text-gray-500 hidden sm:block">5 exercices</span>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" id="arrow5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="content5">
+                        <div class="px-5 pb-5 space-y-4">
+                            <div class="mode-formule rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                    </svg>
+                                    <span class="text-sm font-medium text-emerald-400">📘 Mode d'emploi des Fonctions de calcul</span>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li><strong class="text-white">Structure :</strong> <code class="kbd">=NOM_FONCTION(cellule_début : cellule_fin)</code>.</li>
+                                    <li><strong class="text-white">Les deux points (:)</strong> signifient "jusqu'à".</li>
+                                    <li><strong class="text-white">Somme automatique (Σ) :</strong> Cliquez sous une colonne, appuyez sur le bouton Σ (onglet Accueil) et faites <code class="kbd">Entrée</code>.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1"><strong>SOMME :</strong> Calculez le total d'une colonne avec <code class="kbd">=SOMME(B2:B10)</code>.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1"><strong>MOYENNE :</strong> Trouvez la note moyenne avec <code class="kbd">=MOYENNE(B2:B10)</code>.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1"><strong>MAX/MIN :</strong> Trouvez le plus gros et le plus petit chiffre d'une liste.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1"><strong>NB :</strong> Comptez combien de cellules contiennent des chiffres avec <code class="kbd">=NB(B2:B10)</code>.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1"><strong>NB.VAL :</strong> Comptez les cellules non vides (chiffres ou texte).</p>
+                                    <span class="star text-sm">★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 6 -->
+                <div class="module-card rounded-2xl overflow-hidden cursor-pointer" onclick="toggleModule(6)">
+                    <div class="p-5 flex items-center gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <span class="text-lg font-bold">6</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold mb-0.5">Logique et "Dollar" ($)</h3>
+                            <p class="text-gray-400 text-sm truncate">Automatiser les décisions et figer les calculs</p>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <span class="text-xs text-gray-500 hidden sm:block">5 exercices</span>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" id="arrow6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="content6">
+                        <div class="px-5 pb-5 space-y-4">
+                            <div class="mode-formule rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                    </svg>
+                                    <span class="text-sm font-medium text-emerald-400">📘 Mode d'emploi de la Fonction SI</span>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li><strong class="text-white">Syntaxe :</strong> <code class="kbd">=SI(test ; valeur_si_vrai ; valeur_si_faux)</code></li>
+                                    <li><strong class="text-white">Exemple :</strong> <code class="kbd">=SI(A1>=10 ; "Réussi" ; "Échec")</code></li>
+                                </ul>
+                            </div>
+                            <div class="mode-formule rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-emerald-400 font-bold text-lg">$</span>
+                                    <span class="text-sm font-medium text-emerald-400">📘 Mode d'emploi du Signe Dollar ($)</span>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li>Sert à <strong class="text-white">"figer"</strong> une cellule lors d'une recopie.</li>
+                                    <li>Appuyez sur <code class="kbd">F4</code> après avoir sélectionné une cellule dans votre formule pour la transformer en <code class="kbd">$A$1</code>.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Créez un SI : Si le stock est < 5, affichez "Commander", sinon "OK".</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Calculez une remise fixe de 5% située en cellule <code class="kbd">$Z$1</code> pour toute une colonne de prix.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Utilisez <strong>NB.SI</strong> pour compter combien de fois le mot "Paris" apparaît : <code class="kbd">=NB.SI(A1:A10 ; "Paris")</code>.</p>
+                                    <span class="star text-sm">★★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Créez une <strong>Mise en forme conditionnelle</strong> : mettez en rouge automatique les chiffres négatifs.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Créez une <strong>Liste déroulante</strong> (Onglet Données > Validation des données).</p>
+                                    <span class="star text-sm">★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 7 -->
+                <div class="module-card rounded-2xl overflow-hidden cursor-pointer" onclick="toggleModule(7)">
+                    <div class="p-5 flex items-center gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <span class="text-lg font-bold">7</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold mb-0.5">Analyse et Tableaux Croisés Dynamiques (TCD)</h3>
+                            <p class="text-gray-400 text-sm truncate">Résumer des milliers de lignes en 3 clics</p>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <span class="text-xs text-gray-500 hidden sm:block">5 exercices</span>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" id="arrow7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="content7">
+                        <div class="px-5 pb-5 space-y-4">
+                            <div class="mode-operatoire rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span class="text-sm font-medium text-blue-400">Mode opératoire</span>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li><strong class="text-white">Tri :</strong> Cliquez sur un en-tête, onglet <strong>Données</strong> > <strong>Trier</strong> (A-Z).</li>
+                                    <li><strong class="text-white">Filtre :</strong> Onglet <strong>Données</strong> > <strong>Filtrer</strong>. Utilisez les flèches pour masquer des données.</li>
+                                    <li><strong class="text-white">TCD :</strong> Cliquez dans vos données > <strong>Insertion</strong> > <strong>Tableau croisé dynamique</strong>. Glissez les noms de colonnes dans les cases "Lignes" et "Valeurs" à droite.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Triez une liste de clients par ordre alphabétique.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Filtrez un tableau pour ne voir que les ventes d'un vendeur précis.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Créez un TCD pour voir le total des ventes par catégorie.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Dans un TCD, remplacez la "Somme" par une "Moyenne" via les paramètres de champ.</p>
+                                    <span class="star text-sm">★★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Ajoutez un <strong>Segment</strong> (Slicer) pour filtrer visuellement votre TCD.</p>
+                                    <span class="star text-sm">★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 8 -->
+                <div class="module-card rounded-2xl overflow-hidden cursor-pointer" onclick="toggleModule(8)">
+                    <div class="p-5 flex items-center gap-5">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <span class="text-lg font-bold">8</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-semibold mb-0.5">Graphiques et Protection</h3>
+                            <p class="text-gray-400 text-sm truncate">Illustrer vos résultats et sécuriser votre travail</p>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <span class="text-xs text-gray-500 hidden sm:block">5 exercices</span>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" id="arrow8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content" id="content8">
+                        <div class="px-5 pb-5 space-y-4">
+                            <div class="mode-operatoire rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span class="text-sm font-medium text-blue-400">Mode opératoire</span>
+                                </div>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li><strong class="text-white">Graphique :</strong> Sélectionnez vos chiffres, onglet <strong>Insertion</strong> > <strong>Graphiques recommandés</strong>.</li>
+                                    <li><strong class="text-white">Protection :</strong> Onglet <strong>Révision</strong> > <strong>Protéger la feuille</strong> (définissez un mot de passe).</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Créez un <strong>Histogramme</strong> pour comparer vos ventes mensuelles.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Créez un graphique en <strong>Secteurs</strong> (Camembert) pour montrer les parts de marché.</p>
+                                    <span class="star text-sm">★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Ajoutez un titre et des étiquettes de données à votre graphique.</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Verrouillez votre feuille pour empêcher toute modification des formules.</p>
+                                    <span class="star text-sm">★★★</span>
+                                </div>
+                                <div class="exercise-item p-3 flex items-start gap-3">
+                                    <button onclick="event.stopPropagation(); toggleCheck(this)" class="check-circle w-5 h-5 rounded-full border-2 border-gray-600 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                        <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </button>
+                                    <p class="text-sm flex-1">Préparez l'impression : centrez le tableau horizontalement sur la page (Mise en page > Marges).</p>
+                                    <span class="star text-sm">★★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">🛠️ FAQ - Dépannage</h2>
+                <p class="text-gray-400 text-sm">Les erreurs courantes et comment les résoudre</p>
+            </div>
+
+            <!-- Erreurs de formules -->
+            <div class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
+                        <span class="text-lg">🛑</span>
+                    </div>
+                    <h3 class="text-xl font-semibold">Le Top des Erreurs de Formules</h3>
+                </div>
+                
+                <div class="space-y-3">
+                    <!-- #DIV/0! -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq('faq1')" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                            <div class="flex items-center gap-4">
+                                <code class="kbd text-red-400">#DIV/0!</code>
+                                <span class="text-sm font-medium">Ma cellule affiche cette erreur. Que dois-je corriger ?</span>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0" id="faq1Arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content" id="faq1Content">
+                            <div class="px-5 pb-5 space-y-3">
+                                <div class="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                                    <p class="text-sm text-gray-300">Ce message signifie que votre formule tente d'effectuer une <strong class="text-white">division par zéro</strong> ou par une <strong class="text-white">cellule vide</strong> (qu'Excel considère comme un zéro).</p>
+                                </div>
+                                <div class="mode-operatoire rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-blue-400">Solution</span>
+                                    </div>
+                                    <p class="text-sm text-gray-300">Vérifiez le diviseur dans votre formule. Si vous divisez par une cellule, assurez-vous qu'elle contient bien un nombre différent de zéro.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #NOM? -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq('faq2')" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                            <div class="flex items-center gap-4">
+                                <code class="kbd text-red-400">#NOM?</code>
+                                <span class="text-sm font-medium">Pourquoi Excel affiche-t-il cette erreur ?</span>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0" id="faq2Arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content" id="faq2Content">
+                            <div class="px-5 pb-5 space-y-3">
+                                <div class="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                                    <p class="text-sm text-gray-300">Excel ne reconnaît pas un mot utilisé dans votre formule.</p>
+                                </div>
+                                <div class="mode-operatoire rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-blue-400">Causes possibles</span>
+                                    </div>
+                                    <ol class="text-sm text-gray-300 space-y-2 list-decimal list-inside">
+                                        <li>Une <strong class="text-white">faute de frappe</strong> dans le nom d'une fonction (ex: <code class="kbd">=SOMM(A1:A2)</code> au lieu de <code class="kbd">SOMME</code>).</li>
+                                        <li>Vous avez inséré du <strong class="text-white">texte</strong> dans une formule sans l'entourer de <strong class="text-white">guillemets</strong> (ex: <code class="kbd">=SI(A1>10; Admis; Refusé)</code> au lieu de <code class="kbd">"Admis"</code>).</li>
+                                        <li>Vous utilisez un <strong class="text-white">nom de plage</strong> qui n'a pas encore été défini.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #REF! -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq('faq3')" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                            <div class="flex items-center gap-4">
+                                <code class="kbd text-red-400">#REF!</code>
+                                <span class="text-sm font-medium">J'ai cette erreur. Est-ce grave ?</span>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0" id="faq3Arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content" id="faq3Content">
+                            <div class="px-5 pb-5 space-y-3">
+                                <div class="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                                    <p class="text-sm text-gray-300">C'est une erreur de référence. Elle survient quand une formule se réfère à une cellule qui a été <strong class="text-white">supprimée</strong> (et non simplement effacée).</p>
+                                </div>
+                                <div class="mode-operatoire rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-blue-400">Exemple</span>
+                                    </div>
+                                    <p class="text-sm text-gray-300">Si votre formule est <code class="kbd">=A1+B1</code> et que vous supprimez physiquement la colonne B, Excel ne sait plus quoi additionner. Vous devez réécrire la formule en pointant vers une cellule existante.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #VALEUR! -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq('faq4')" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                            <div class="flex items-center gap-4">
+                                <code class="kbd text-red-400">#VALEUR!</code>
+                                <span class="text-sm font-medium">Pourquoi ma formule affiche-t-elle cette erreur ?</span>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0" id="faq4Arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content" id="faq4Content">
+                            <div class="px-5 pb-5 space-y-3">
+                                <div class="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                                    <p class="text-sm text-gray-300">Excel attend un chiffre mais vous lui donnez du texte.</p>
+                                </div>
+                                <div class="mode-operatoire rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-yellow-400">Le piège classique</span>
+                                    </div>
+                                    <p class="text-sm text-gray-300">Tenter de faire une opération mathématique sur une cellule qui contient un mot (ex: multiplier une quantité par "10 euros" écrit en texte au lieu d'utiliser le format monétaire).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problèmes d'affichage -->
+            <div class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center">
+                        <span class="text-lg">🧐</span>
+                    </div>
+                    <h3 class="text-xl font-semibold">Problèmes d'affichage et de saisie</h3>
+                </div>
+                
+                <div class="space-y-3">
+                    <!-- Zéros disparus -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq('faq5')" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                            <div class="flex items-center gap-4 flex-1 min-w-0">
+                                <span class="text-sm font-medium truncate">Pourquoi mes zéros disparaissent-ils (codes postaux, téléphones) ?</span>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0 ml-2" id="faq5Arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content" id="faq5Content">
+                            <div class="px-5 pb-5 space-y-3">
+                                <div class="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
+                                    <p class="text-sm text-gray-300">Par défaut, Excel utilise le format <strong class="text-white">Standard</strong> qui supprime les zéros inutiles placés devant un nombre (il transforme 01400 en 1400).</p>
+                                </div>
+                                <div class="mode-operatoire rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-blue-400">Solution</span>
+                                    </div>
+                                    <p class="text-sm text-gray-300">Faites un clic-droit sur la cellule > <strong class="text-white">Format de cellule</strong> > Onglet <strong class="text-white">Nombre</strong> > Catégorie <strong class="text-white">Spécial</strong> et choisissez "Code postal" ou "Numéro de téléphone".</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Texte coupé -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq('faq6')" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                            <div class="flex items-center gap-4 flex-1 min-w-0">
+                                <span class="text-sm font-medium truncate">Mon texte est "coupé" ou déborde sur la case d'à côté. Comment faire ?</span>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0 ml-2" id="faq6Arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content" id="faq6Content">
+                            <div class="px-5 pb-5 space-y-3">
+                                <div class="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
+                                    <p class="text-sm text-gray-300">Si la cellule à droite est vide, le texte déborde. Si elle est occupée, Excel tronque l'affichage (mais ne supprime pas le texte).</p>
+                                </div>
+                                <div class="mode-operatoire rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-blue-400">Solutions</span>
+                                    </div>
+                                    <ol class="text-sm text-gray-300 space-y-2 list-decimal list-inside">
+                                        <li><strong class="text-white">Élargir la colonne :</strong> Double-cliquez sur le trait séparateur dans l'en-tête (entre les lettres A et B).</li>
+                                        <li><strong class="text-white">Renvoyer à la ligne :</strong> Cliquez sur le bouton <strong class="text-white">Renvoyer à la ligne automatiquement</strong> (onglet Accueil) pour que la cellule s'agrandisse en hauteur.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Date bizarre -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq('faq7')" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                            <div class="flex items-center gap-4 flex-1 min-w-0">
+                                <span class="text-sm font-medium truncate">Ma différence de dates affiche une date bizarre au lieu d'un nombre</span>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0 ml-2" id="faq7Arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content" id="faq7Content">
+                            <div class="px-5 pb-5 space-y-3">
+                                <div class="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
+                                    <p class="text-sm text-gray-300">C'est un automatisme parfois agaçant : Excel voit des dates dans la formule, donc il applique le format "Date" au résultat (ex: 01/05/1900 au lieu d'un nombre de jours).</p>
+                                </div>
+                                <div class="mode-operatoire rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-blue-400">Solution</span>
+                                    </div>
+                                    <p class="text-sm text-gray-300">Sélectionnez la cellule du résultat, allez dans le groupe <strong class="text-white">Nombre</strong> de l'onglet Accueil et changez "Date" par <strong class="text-white">Standard</strong> ou <strong class="text-white">Nombre</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comportements inattendus -->
+            <div class="mb-10">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                        <span class="text-lg">⚙️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold">Comportements inattendus du logiciel</h3>
+                </div>
+                
+                <div class="space-y-3">
+                    <!-- Tirette fausse -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq('faq8')" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                            <div class="flex items-center gap-4 flex-1 min-w-0">
+                                <span class="text-sm font-medium truncate">J'ai tiré ma formule mais tous les résultats sont faux. Pourquoi ?</span>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0 ml-2" id="faq8Arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content" id="faq8Content">
+                            <div class="px-5 pb-5 space-y-3">
+                                <div class="bg-purple-500/10 border border-purple-500/20 rounded-xl p-4">
+                                    <p class="text-sm text-gray-300">C'est le problème des <strong class="text-white">références relatives</strong>. Excel décale les adresses de cellules vers le bas en même temps que vous.</p>
+                                </div>
+                                <div class="mode-operatoire rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-blue-400">Solution</span>
+                                    </div>
+                                    <p class="text-sm text-gray-300">Si vous voulez qu'une cellule reste "fixe" (comme un taux de TVA en haut de page), vous devez la "verrouiller" avec le <strong class="text-white">signe $</strong> (ex: <code class="kbd">$B$1</code>) en appuyant sur la touche <code class="kbd">F4</code> lors de la création de la formule.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tableau protégé -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq('faq9')" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                            <div class="flex items-center gap-4 flex-1 min-w-0">
+                                <span class="text-sm font-medium truncate">Je n'arrive plus à modifier mon tableau, Excel me dit qu'il est protégé</span>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0 ml-2" id="faq9Arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content" id="faq9Content">
+                            <div class="px-5 pb-5 space-y-3">
+                                <div class="bg-purple-500/10 border border-purple-500/20 rounded-xl p-4">
+                                    <p class="text-sm text-gray-300">Quelqu'un (ou vous-même) a activé la protection de la feuille pour empêcher les modifications.</p>
+                                </div>
+                                <div class="mode-operatoire rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-blue-400">Solution</span>
+                                    </div>
+                                    <p class="text-sm text-gray-300">Allez dans l'onglet <strong class="text-white">Révision</strong> et cliquez sur <strong class="text-white">Ôter la protection de la feuille</strong>. Si un mot de passe a été défini, vous devrez le saisir.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feuille supprimée -->
+                    <div class="glass rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq('faq10')" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                            <div class="flex items-center gap-4 flex-1 min-w-0">
+                                <span class="text-sm font-medium truncate">J'ai supprimé une feuille par erreur. Puis-je l'annuler avec Ctrl + Z ?</span>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0 ml-2" id="faq10Arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content" id="faq10Content">
+                            <div class="px-5 pb-5 space-y-3">
+                                <div class="bg-red-500/10 border border-red-500/20 rounded-xl p-4 flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                    </svg>
+                                    <p class="text-sm text-gray-300"><strong class="text-red-400">Attention !</strong> La suppression d'une feuille est une action <strong class="text-white">irréversible</strong>. Le bouton "Annuler" ne fonctionne pas pour cela.</p>
+                                </div>
+                                <div class="mode-operatoire rounded-xl p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm font-medium text-blue-400">Seule solution</span>
+                                    </div>
+                                    <p class="text-sm text-gray-300">Fermer le fichier <strong class="text-white">sans enregistrer</strong> les modifications pour le rouvrir dans son état précédent.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Astuces de survie -->
+            <div>
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                        <span class="text-lg">💡</span>
+                    </div>
+                    <h3 class="text-xl font-semibold">Astuces de "Survie"</h3>
+                </div>
+                
+                <div class="grid gap-4 md:grid-cols-3">
+                    <!-- Mode Modifier -->
+                    <div class="glass rounded-2xl p-5">
+                        <div class="flex items-center gap-2 mb-3">
+                            <code class="kbd">F2</code>
+                            <span class="text-sm font-medium text-emerald-400">Mode "Modifier"</span>
+                        </div>
+                        <p class="text-sm text-gray-300">Si vous appuyez sur les flèches du clavier et que cela déplace le curseur vert au lieu de corriger votre texte, appuyez sur <code class="kbd">F2</code> ou <strong class="text-white">double-cliquez</strong> dans la cellule pour entrer à l'intérieur.</p>
+                    </div>
+
+                    <!-- ###### -->
+                    <div class="glass rounded-2xl p-5">
+                        <div class="flex items-center gap-2 mb-3">
+                            <code class="kbd">######</code>
+                            <span class="text-sm font-medium text-emerald-400">Les dièses</span>
+                        </div>
+                        <p class="text-sm text-gray-300">Si votre cellule est remplie de dièses, ce n'est pas une erreur de calcul. C'est simplement que votre colonne est <strong class="text-white">trop étroite</strong> pour afficher le nombre. Élargissez la colonne.</p>
+                    </div>
+
+                    <!-- Ctrl + Z -->
+                    <div class="glass rounded-2xl p-5">
+                        <div class="flex items-center gap-2 mb-3">
+                            <code class="kbd">Ctrl</code>
+                            <span class="text-gray-500">+</span>
+                            <code class="kbd">Z</code>
+                            <span class="text-sm font-medium text-emerald-400">Annuler</span>
+                        </div>
+                        <p class="text-sm text-gray-300">Le raccourci magique ! Vous pouvez l'utiliser <strong class="text-white">plusieurs fois</strong> pour remonter loin dans le temps et annuler plusieurs actions successives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auto-évaluation -->
+    <section id="evaluation" class="py-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">📝 Auto-évaluation finale</h2>
+                <p class="text-gray-400 text-sm">Testez vos connaissances acquises</p>
+            </div>
+            
+            <div class="space-y-3" id="quizContainer">
+                <!-- Question 1 -->
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button onclick="toggleQuiz(1)" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                            <span class="text-sm font-medium">Comment Excel sait-il que vous tapez une formule ?</span>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0" id="quizArrow1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="quizContent1">
+                        <div class="px-5 pb-5">
+                            <div class="bg-green-500/15 border border-green-500/30 rounded-xl p-4 flex items-center gap-3">
+                                <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span class="text-green-300 text-sm">Elle commence par <code class="kbd">=</code></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button onclick="toggleQuiz(2)" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                            <span class="text-sm font-medium">Quelle est la différence entre une cellule et une plage ?</span>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0" id="quizArrow2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="quizContent2">
+                        <div class="px-5 pb-5">
+                            <div class="bg-green-500/15 border border-green-500/30 rounded-xl p-4 flex items-center gap-3">
+                                <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span class="text-green-300 text-sm">Une cellule est une case unique, une plage est un groupe de cellules séparées par <code class="kbd">:</code></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button onclick="toggleQuiz(3)" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                            <span class="text-sm font-medium">Quelle touche du clavier fige une cellule ($) ?</span>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0" id="quizArrow3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="quizContent3">
+                        <div class="px-5 pb-5">
+                            <div class="bg-green-500/15 border border-green-500/30 rounded-xl p-4 flex items-center gap-3">
+                                <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span class="text-green-300 text-sm">Touche <code class="kbd">F4</code></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button onclick="toggleQuiz(4)" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+                            <span class="text-sm font-medium">Comment créer une série automatique (Lundi, Mardi...) ?</span>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0" id="quizArrow4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="quizContent4">
+                        <div class="px-5 pb-5">
+                            <div class="bg-green-500/15 border border-green-500/30 rounded-xl p-4 flex items-center gap-3">
+                                <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span class="text-green-300 text-sm">En tirant la <strong>poignée de recopie</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button onclick="toggleQuiz(5)" class="w-full p-5 text-left flex items-center justify-between hover:bg-white/5 transition">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-sm font-bold flex-shrink-0">5</span>
+                            <span class="text-sm font-medium">À quoi sert un TCD ?</span>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0" id="quizArrow5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="quizContent5">
+                        <div class="px-5 pb-5">
+                            <div class="bg-green-500/15 border border-green-500/30 rounded-xl p-4 flex items-center gap-3">
+                                <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span class="text-green-300 text-sm">À <strong>synthétiser et croiser des données</strong> sans faire de calculs manuels</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 px-6 border-t border-white/5">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <div class="excel-green w-8 h-8 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.5 17.5L7 14l2.5-3.5 1.5 1-2 2.5 2 2.5-1.5 1zM14.5 17.5l-1.5-1 2-2.5-2-2.5 1.5-1L17 14l-2.5 3.5z"/>
+                    </svg>
+                </div>
+                <span class="font-medium">Excel 365 - Formation Débutant</span>
+            </div>
+            <p class="text-gray-500 text-xs">Maîtrise des Tableaux et des Formules</p>
+            <p class="text-gray-600 text-xs mt-3">© 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Track completed exercises
+        let completedExercises = new Set();
+        const totalExercises = 40;
+
+        // Load saved progress
+        function loadProgress() {
+            const saved = localStorage.getItem('excel365Progress');
+            if (saved) {
+                completedExercises = new Set(JSON.parse(saved));
+                document.querySelectorAll('.check-circle').forEach((btn, index) => {
+                    if (completedExercises.has(index)) {
+                        btn.classList.add('checked');
+                        btn.querySelector('svg').style.opacity = '1';
+                    }
+                });
+                updateProgress();
+            }
+        }
+
+        // Save progress
+        function saveProgress() {
+            localStorage.setItem('excel365Progress', JSON.stringify([...completedExercises]));
+        }
+
+        // Toggle module accordion
+        function toggleModule(num) {
+            const content = document.getElementById(`content${num}`);
+            const arrow = document.getElementById(`arrow${num}`);
+            
+            content.classList.toggle('open');
+            arrow.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+        }
+
+        // Toggle quiz accordion
+        function toggleQuiz(num) {
+            const content = document.getElementById(`quizContent${num}`);
+            const arrow = document.getElementById(`quizArrow${num}`);
+            
+            content.classList.toggle('open');
+            arrow.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+        }
+
+        // Toggle FAQ accordion
+        function toggleFaq(id) {
+            const content = document.getElementById(`${id}Content`);
+            const arrow = document.getElementById(`${id}Arrow`);
+            
+            content.classList.toggle('open');
+            arrow.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+        }
+
+        // Toggle exercise check
+        function toggleCheck(btn) {
+            const allChecks = document.querySelectorAll('.check-circle');
+            const index = Array.from(allChecks).indexOf(btn);
+            
+            btn.classList.toggle('checked');
+            const svg = btn.querySelector('svg');
+            
+            if (btn.classList.contains('checked')) {
+                svg.style.opacity = '1';
+                completedExercises.add(index);
+            } else {
+                svg.style.opacity = '0';
+                completedExercises.delete(index);
+            }
+            
+            saveProgress();
+            updateProgress();
+        }
+
+        // Update progress display
+        function updateProgress() {
+            const percentage = Math.round((completedExercises.size / totalExercises) * 100);
+            document.getElementById('progressText').textContent = `${percentage}%`;
+            
+            const circle = document.getElementById('progressCircle');
+            const circumference = 2 * Math.PI * 16;
+            const offset = circumference - (percentage / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        loadProgress();
+    </script>
+</body>
+</html>
